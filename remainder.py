@@ -38,18 +38,16 @@ def define_weekday(date):
 def check_user_has_birthday_nextweek(birthday):
 
     day_from, day_to = define_birthday_week()
-
     if day_from < birthday <= day_to:
         return True
     return False
 
 
 def define_birthday_week():
+    
     current_day = datetime.now().date()
     current_weekday = current_day.weekday()
-
     delta = 5 - current_weekday
-
     day_from = current_day + timedelta(days=delta)
     day_to = day_from + timedelta(days=6)
 
@@ -59,10 +57,8 @@ def define_birthday_week():
 def print_birthday_people():
     with open("birthdays.txt", "w") as fh:
         for day, users in result.items():
-            if not users:
-                continue
-
-            fh.write(f"{day}: {', '.join(users)}\n")
+            if users:
+                fh.write(f"{day}: {', '.join(users)}\n")
 
 
 def put_user_in_result_table(username, weekday):
