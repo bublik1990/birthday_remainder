@@ -24,11 +24,7 @@ def get_birthdays_per_week(users):
 
 
 def define_birthday_this_year(user):
-    return date(
-                year=datetime.now().year,
-                month=user["birthday"].month,
-                day=user["birthday"].day
-            )
+    return user["birthday"].replace(year=datetime.now().year)
 
 
 def define_weekday(date):
