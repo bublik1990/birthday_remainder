@@ -10,6 +10,7 @@ result = {
     "friday": []
 }
 
+
 def get_birthdays_per_week(users):
 
     for user in users:
@@ -28,17 +29,10 @@ def define_birthday_this_year(user):
 
 
 def define_weekday(date):
-    match date.weekday():
-        case 1:
-            return 'tuesday'
-        case 2:
-            return 'wednesday'
-        case 3:
-            return 'thursday'
-        case 4:
-            return 'friday'
-        case _:
-            return 'monday'
+    weekday = date.strftime("%A").lower()
+    if weekday not in result.keys():
+        return "monday"
+    return weekday
 
 
 def check_user_has_birthday_nextweek(birthday):
